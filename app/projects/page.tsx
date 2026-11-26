@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -14,8 +15,31 @@ import {
   Smartphone,
   Terminal,
   Lightbulb,
-  ExternalLink,
-  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  Monitor,
+  Wallet,
+  CircuitBoard,
+  PanelsTopLeft,
+  ArrowRight,
+  Braces,
+  Activity,
+  CircleDot,
+  Zap,
+  Wifi,
+  Gauge,
+  ShoppingCart,
+  Brain,
+  Map,
+  BarChart3,
+  ShieldCheck,
+  MessageCircle,
+  Server,
+  LockKeyhole,
+  Cloud,
+  Fingerprint,
+  TrendingUp,
+  Bot,
 } from "lucide-react";
 
 const projects = [
@@ -92,9 +116,355 @@ const explorations = [
   },
 ];
 
+/* =========================================================
+   PROJECT SHOWCASE DATA
+   Tambahkan project baru di sini.
+   image: path gambar dari folder public.
+   Jika belum punya gambar, isi string kosong.
+========================================================= */
+
+const showcaseProjects = [
+  {
+    number: "02",
+    name: "Personal Savings",
+    category: "PERSONAL FINANCE · WEB APP",
+    description:
+      "A personal financial space built to bring multiple accounts into one place. The idea is to make saving, monitoring balances, and understanding money habits feel simpler and more organized.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    status: "In Development",
+    visual: "savings",
+    image: "/projects/personal-savings.png",
+    metrics: ["Multiple accounts", "Balance tracking", "Financial overview"],
+    icon: Wallet,
+  },
+  {
+    number: "03",
+    name: "IoT Experiments",
+    category: "EMBEDDED SYSTEMS · IOT",
+    description:
+      "A playground for learning how software interacts with physical devices. Through simulations and hardware experiments, I explore sensors, microcontrollers, logic, and the possibilities of connected systems.",
+    tags: ["Wokwi", "Arduino", "IoT"],
+    status: "Exploration",
+    visual: "iot",
+    image: "",
+    metrics: ["Sensor simulation", "Hardware logic", "Embedded systems"],
+    icon: CircuitBoard,
+  },
+  {
+    number: "04",
+    name: "Personal Profile",
+    category: "WEB DEVELOPMENT · PORTFOLIO",
+    description:
+      "More than a portfolio, this website is a digital space to document my journey, showcase what I build, share things I learn, and explore the ideas I hope to bring to life.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    status: "In Development",
+    visual: "image",
+    image: "/projects/personal-profile.png",
+    metrics: ["Personal journey", "Project showcase", "Creative space"],
+    icon: PanelsTopLeft,
+  },
+  {
+    number: "05",
+    name: "StarMart Platform",
+    category: "E-COMMERCE · WEB PLATFORM",
+    description:
+      "A modern e-commerce platform concept featuring inventory management, online transactions, and seller-oriented analytics to support a more organized digital shopping experience.",
+    tags: ["React", "Node.js", "PostgreSQL", "Redis"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/starmart.png",
+    metrics: ["Inventory management", "Online transactions", "Seller analytics"],
+    icon: ShoppingCart,
+  },
+  {
+    number: "06",
+    name: "MediScan AI",
+    category: "ARTIFICIAL INTELLIGENCE · HEALTH",
+    description:
+      "An AI-oriented concept for image-based skin condition analysis, combining machine learning and web technology to explore how intelligent systems could assist in preliminary information gathering.",
+    tags: ["Python", "TensorFlow", "FastAPI", "React"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/mediscan.png",
+    metrics: ["Image classification", "Machine learning", "AI integration"],
+    icon: Brain,
+  },
+  {
+    number: "07",
+    name: "WisataKu App",
+    category: "MOBILE APPLICATION · TRAVEL",
+    description:
+      "A travel application concept that explores personalized destination recommendations through user preferences, weather information, and travel discovery features.",
+    tags: ["Flutter", "Firebase", "Google Maps", "OpenWeather"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/wisataku.png",
+    metrics: ["Travel discovery", "Personalized suggestions", "Map integration"],
+    icon: Map,
+  },
+  {
+    number: "08",
+    name: "FinTrack Dashboard",
+    category: "DATA ANALYTICS · FINANCE",
+    description:
+      "An interactive financial dashboard concept focused on data visualization, financial trend exploration, and generating structured reports to support business insights.",
+    tags: ["Python", "Pandas", "Plotly", "Streamlit"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/fintrack.png",
+    metrics: ["Financial visualization", "Trend exploration", "Reporting"],
+    icon: BarChart3,
+  },
+  {
+    number: "09",
+    name: "SecureVault API",
+    category: "BACKEND · API SECURITY",
+    description:
+      "A backend API concept exploring secure authentication, access control, API protection, and structured data handling for modern web applications.",
+    tags: ["Node.js", "JWT", "MongoDB", "Docker"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/securevault.png",
+    metrics: ["Authentication", "API protection", "Backend architecture"],
+    icon: ShieldCheck,
+  },
+  {
+    number: "10",
+    name: "ChatSpace Real-time",
+    category: "REAL-TIME APPLICATION · CHAT",
+    description:
+      "A real-time messaging application concept exploring interactive communication, instant messaging, and scalable chat architecture through modern web technologies.",
+    tags: ["Socket.io", "React", "WebRTC", "Node.js"],
+    status: "Project Concept",
+    visual: "image",
+    image: "/projects/chatspace.png",
+    metrics: ["Real-time messaging", "Communication", "Interactive systems"],
+    icon: MessageCircle,
+  },
+];
+
+/* =========================================================
+   IOT VISUAL
+========================================================= */
+
+function IoTVisual() {
+  return (
+    <div className="relative flex min-h-[350px] w-full items-center justify-center overflow-hidden bg-[#f1f5f9] p-6 sm:min-h-[420px] sm:p-10">
+      <div className="absolute inset-0 opacity-50">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(148,163,184,0.17) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.17) 1px, transparent 1px)",
+            backgroundSize: "25px 25px",
+          }}
+        />
+      </div>
+
+      <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white blur-3xl" />
+      <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-slate-300/50 blur-3xl" />
+
+      <div className="relative w-full max-w-[470px] rotate-[-1deg] rounded-[26px] border border-slate-300 bg-[#202b3a] p-5 shadow-2xl shadow-slate-400/30 transition-transform duration-500 group-hover:rotate-0 sm:p-7">
+
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-500 bg-slate-800 text-slate-100">
+              <CircuitBoard size={20} />
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold text-white">
+                IoT Lab
+              </p>
+              <p className="text-[10px] tracking-wide text-slate-400">
+                Embedded systems playground
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            <span className="text-[10px] text-slate-300">
+              ACTIVE
+            </span>
+          </div>
+        </div>
+
+        <div className="relative rounded-2xl border border-slate-600 bg-[#17212e] p-5">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
+              Circuit overview
+            </p>
+            <Braces size={15} className="text-slate-400" />
+          </div>
+
+          <div className="relative mx-auto flex min-h-[230px] items-center justify-center">
+            <svg
+              viewBox="0 0 400 230"
+              className="absolute inset-0 h-full w-full"
+              fill="none"
+            >
+              <path d="M90 55 H155 V90" stroke="#64748b" strokeWidth="2" />
+              <path d="M90 175 H155 V140" stroke="#64748b" strokeWidth="2" />
+              <path d="M245 90 V55 H310" stroke="#64748b" strokeWidth="2" />
+              <path d="M245 140 V175 H310" stroke="#64748b" strokeWidth="2" />
+              <path d="M200 25 V60" stroke="#64748b" strokeWidth="2" />
+              <path d="M200 170 V205" stroke="#64748b" strokeWidth="2" />
+
+              <circle cx="155" cy="90" r="4" fill="#94a3b8" />
+              <circle cx="155" cy="140" r="4" fill="#94a3b8" />
+              <circle cx="245" cy="90" r="4" fill="#94a3b8" />
+              <circle cx="245" cy="140" r="4" fill="#94a3b8" />
+            </svg>
+
+            <div className="relative z-10 flex h-[120px] w-[140px] flex-col items-center justify-center rounded-2xl border border-slate-500 bg-[#334155] shadow-xl">
+              <Cpu size={32} className="text-white" />
+              <p className="mt-3 text-xs font-semibold tracking-wider text-white">
+                ESP32
+              </p>
+              <p className="mt-1 text-[9px] text-slate-400">
+                Microcontroller
+              </p>
+            </div>
+
+            <div className="absolute left-[2%] top-[8%] z-10 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-500 bg-[#263445] shadow-lg">
+              <Gauge size={19} className="text-slate-200" />
+            </div>
+
+            <div className="absolute left-[2%] bottom-[8%] z-10 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-500 bg-[#263445] shadow-lg">
+              <Activity size={19} className="text-slate-200" />
+            </div>
+
+            <div className="absolute right-[2%] top-[8%] z-10 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-500 bg-[#263445] shadow-lg">
+              <Wifi size={19} className="text-slate-200" />
+            </div>
+
+            <div className="absolute right-[2%] bottom-[8%] z-10 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-500 bg-[#263445] shadow-lg">
+              <Zap size={19} className="text-slate-200" />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5 grid grid-cols-3 gap-3">
+          {[
+            { label: "Sensors", value: "INPUT" },
+            { label: "Controller", value: "PROCESS" },
+            { label: "Output", value: "RESULT" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="rounded-xl border border-slate-600 bg-slate-800 p-3"
+            >
+              <p className="text-[9px] text-slate-400">{item.label}</p>
+              <p className="mt-2 text-[10px] font-medium tracking-wider text-slate-200">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5 flex items-center justify-between">
+          <span className="text-[10px] text-slate-400">
+            SIMULATION / EXPERIMENT
+          </span>
+          <CircuitBoard size={15} className="text-slate-400" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+function ProjectImage({
+  src,
+  projectName,
+}: {
+  src: string;
+  projectName: string;
+}) {
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <div className="relative flex min-h-[350px] w-full items-center justify-center overflow-hidden bg-[#f1f5f9] sm:min-h-[420px]">
+      <div className="absolute inset-0 opacity-40">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(148,163,184,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.15) 1px, transparent 1px)",
+            backgroundSize: "25px 25px",
+          }}
+        />
+      </div>
+
+      <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white blur-3xl" />
+
+      {!imageError && src ? (
+        <img
+          src={src}
+          alt={`${projectName} preview`}
+          onError={() => setImageError(true)}
+          className="relative z-10 h-full min-h-[350px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] sm:min-h-[420px]"
+        />
+      ) : (
+        <div className="relative z-10 flex w-full max-w-md flex-col items-center px-8 text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-600 shadow-sm">
+            <Monitor size={26} />
+          </div>
+
+          <p className="mt-5 text-sm font-semibold text-slate-700">
+            {projectName}
+          </p>
+
+          <p className="mt-2 text-xs leading-6 text-slate-400">
+            Project preview will appear here
+            <br />
+            once the screenshot is added.
+          </p>
+
+          <div className="mt-5 rounded-lg border border-slate-200 bg-white px-4 py-2 text-[10px] tracking-wider text-slate-400">
+            IMAGE PLACEHOLDER
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* =========================================================
+   VISUAL ROUTER
+========================================================= */
+
+function ShowcaseVisual({
+  type,
+  image,
+  name,
+}: {
+  type: string;
+  image: string;
+  name: string;
+}) {
+  if (type === "iot") return <IoTVisual />;
+
+  return <ProjectImage src={image} projectName={name} />;
+}
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
 export default function ProjectsPage() {
   const featuredProject = projects.find((project) => project.featured)!;
   const otherProjects = projects.filter((project) => !project.featured);
+
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleShowcase = showAll
+    ? showcaseProjects
+    : showcaseProjects.slice(0, 2);
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#1e293b]">
@@ -127,10 +497,15 @@ export default function ProjectsPage() {
               <div className="rounded-2xl border border-slate-200 bg-white p-4">
                 <FolderKanban size={21} className="text-slate-600" />
               </div>
+
               <div>
                 <p className="text-2xl font-semibold text-slate-900">
-                  04
+                  {String(projects.length + showcaseProjects.length - 1).padStart(
+                    2,
+                    "0"
+                  )}
                 </p>
+
                 <p className="text-xs text-slate-500">
                   Projects & experiments
                 </p>
@@ -179,27 +554,28 @@ export default function ProjectsPage() {
           ))}
         </section>
 
-        {/* FEATURED PROJECT */}
+        {/* FEATURED REQUIFY */}
         <section className="mt-20">
           <div className="mb-8 flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
                 Spotlight
               </p>
+
               <h2 className="mt-2 text-xl font-semibold text-slate-900">
                 Featured project
               </h2>
             </div>
 
             <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-500">
-              01 / 04
+              01 / 10
             </span>
           </div>
 
-          <article className="overflow-hidden rounded-[28px] border border-slate-200 bg-white">
+          <article className="overflow-hidden rounded-[28px] border border-slate-200 bg-white transition-shadow duration-300 hover:shadow-xl hover:shadow-slate-200/40">
             <div className="grid lg:grid-cols-2">
 
-              {/* PROJECT VISUAL */}
+              {/* REQUIFY VISUAL */}
               <div className="relative min-h-[320px] overflow-hidden bg-[#eef2f6] p-8 sm:p-12">
                 <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/70 blur-3xl" />
                 <div className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-slate-300/30 blur-3xl" />
@@ -255,7 +631,7 @@ export default function ProjectsPage() {
                           </span>
                         </div>
 
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           <span className="rounded-md bg-slate-200 px-2 py-1 text-[10px] text-slate-600">
                             Ambiguity
                           </span>
@@ -273,7 +649,7 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              {/* PROJECT DETAILS */}
+              {/* DETAILS */}
               <div className="flex flex-col justify-center p-8 sm:p-12">
                 <div className="mb-6 flex items-center gap-3">
                   <span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">
@@ -319,8 +695,156 @@ export default function ProjectsPage() {
           </article>
         </section>
 
-        {/* OTHER PROJECTS */}
-        <section className="mt-20">
+        {/* SHOWCASE */}
+        <section className="mt-24">
+          <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <div className="mb-4 flex items-center gap-3">
+                <span className="h-px w-8 bg-slate-400" />
+                <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
+                  Project showcase
+                </p>
+              </div>
+
+              <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                Ideas in progress.
+              </h2>
+
+              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500">
+                A closer look at some of the things I have been building,
+                exploring, and learning along the way.
+              </p>
+            </div>
+
+            <p className="text-xs tracking-wider text-slate-400">
+              SELECTED PROJECTS · 02—10
+            </p>
+          </div>
+
+          <div className="space-y-20 sm:space-y-28">
+            {visibleShowcase.map((project, index) => (
+              <article
+                key={project.number}
+                className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-0 animate-[fadeIn_0.7s_ease-out]"
+              >
+                {/* IMAGE */}
+                <div
+                  className={`relative overflow-hidden rounded-[28px] border border-slate-200 bg-white lg:col-span-7 ${
+                    index % 2 === 0
+                      ? "lg:col-start-1"
+                      : "lg:col-start-6"
+                  }`}
+                >
+                  <ShowcaseVisual
+                    type={project.visual}
+                    image={project.image}
+                    name={project.name}
+                  />
+
+                  <div className="absolute left-5 top-5 z-20 rounded-full border border-slate-200/70 bg-white/90 px-3 py-1.5 backdrop-blur-sm sm:left-7 sm:top-7">
+                    <span className="text-[10px] font-medium tracking-wider text-slate-500">
+                      PROJECT {project.number}
+                    </span>
+                  </div>
+                </div>
+
+                {/* CONTENT */}
+                <div
+                  className={`relative z-10 lg:col-span-6 ${
+                    index % 2 === 0
+                      ? "lg:col-start-7 lg:row-start-1 lg:pl-12"
+                      : "lg:col-start-1 lg:row-start-1 lg:pr-12"
+                  }`}
+                >
+                  <span className="text-xs font-medium tracking-[0.18em] text-slate-400">
+                    {project.category}
+                  </span>
+
+                  <div className="mt-5 flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600">
+                      <project.icon size={20} />
+                    </div>
+
+                    <span className="text-xs text-slate-400">
+                      {project.status}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                    {project.name}
+                  </h3>
+
+                  <p className="mt-5 text-sm leading-8 text-slate-500">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-7 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600 transition-all duration-300 hover:border-slate-400 hover:bg-slate-50"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 border-t border-slate-200 pt-6">
+                    <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+                      Focus areas
+                    </p>
+
+                    <div className="space-y-3">
+                      {project.metrics.map((metric) => (
+                        <div
+                          key={metric}
+                          className="flex items-center gap-3 text-sm text-slate-600"
+                        >
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100">
+                            <ArrowRight size={11} />
+                          </span>
+                          {metric}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex items-center gap-2 text-xs text-slate-400 transition-colors group-hover:text-slate-700">
+                    <span>Exploring possibilities</span>
+                    <ArrowUpRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                    />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* SHOW MORE */}
+          {showcaseProjects.length > 2 && (
+            <div className="mt-14 flex justify-center">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-600 transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-200/40"
+              >
+                {showAll ? "Show less projects" : "Show more projects"}
+
+                {showAll ? (
+                  <ChevronUp size={17} />
+                ) : (
+                  <ChevronDown
+                    size={17}
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
+                )}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* ORIGINAL PROJECT CARDS */}
+        <section className="mt-24">
           <div className="mb-8">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
               More explorations
@@ -329,6 +853,11 @@ export default function ProjectsPage() {
             <h2 className="mt-2 text-xl font-semibold text-slate-900">
               Other projects
             </h2>
+
+            <p className="mt-3 max-w-xl text-sm leading-7 text-slate-500">
+              A quick overview of the projects and experiments currently
+              included in my digital workspace.
+            </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
@@ -386,7 +915,7 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        {/* EXPLORATION */}
+        {/* EXPLORATIONS */}
         <section className="mt-20">
           <div className="rounded-[28px] border border-slate-200 bg-white p-8 sm:p-12">
             <div className="max-w-xl">
@@ -473,6 +1002,7 @@ export default function ProjectsPage() {
         </footer>
       </div>
 
+      {/* ANIMATIONS */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {
@@ -482,6 +1012,20 @@ export default function ProjectsPage() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
           }
         }
       `}</style>

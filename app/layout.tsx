@@ -1,10 +1,12 @@
-
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Home, ArrowUpRight } from "lucide-react";
+
+// Import komponen client yang baru kita buat
+import CopyrightYear from "./components/CopyrightYear";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,24 +59,16 @@ export default function RootLayout({
             className="mx-auto max-w-[1600px] px-5 lg:px-10"
           >
             <div className="flex min-h-[84px] flex-col gap-5 py-5 xl:flex-row xl:items-center xl:justify-between xl:py-0">
-
               {/* BRAND */}
-              <Link
-                href="/"
-                className="group flex shrink-0 items-center gap-3"
-              >
+              <Link href="/" className="group flex shrink-0 items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 transition-colors group-hover:bg-slate-700">
                   <Home size={18} className="text-white" />
                 </div>
-
                 <div>
                   <h1 className="text-sm font-semibold tracking-tight text-slate-900">
                     Personal Profile
                   </h1>
-
-                  <p className="mt-1 text-xs text-slate-400">
-                    Lintang Maharani
-                  </p>
+                  <p className="mt-1 text-xs text-slate-400">Lintang Maharani</p>
                 </div>
               </Link>
 
@@ -95,17 +89,13 @@ export default function RootLayout({
         </header>
 
         {/* MAIN CONTENT */}
-        <main className="flex-grow">
-          {children}
-        </main>
+        <main className="flex-grow">{children}</main>
 
         {/* GLOBAL FOOTER */}
         <footer className="border-t border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
-
             {/* FOOTER CONTENT */}
             <div className="flex flex-col gap-10 py-10 lg:flex-row lg:items-start lg:justify-between">
-
               {/* FOOTER BRAND */}
               <div className="max-w-sm">
                 <Link
@@ -115,10 +105,9 @@ export default function RootLayout({
                   Personal Profile
                   <span className="text-slate-400">.</span>
                 </Link>
-
                 <p className="mt-3 text-sm leading-7 text-slate-500">
-                  A personal space to share my journey, projects,
-                  experiences, ideas, writings, and creative stories.
+                  A personal space to share my journey, projects, experiences,
+                  ideas, writings, and creative stories.
                 </p>
               </div>
 
@@ -127,7 +116,6 @@ export default function RootLayout({
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
                   Explore
                 </p>
-
                 <div className="grid grid-cols-3 gap-x-6 gap-y-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4">
                   {navigation.map((item) => (
                     <Link
@@ -144,10 +132,10 @@ export default function RootLayout({
 
             {/* FOOTER BOTTOM */}
             <div className="flex flex-col gap-5 border-t border-slate-100 py-5 sm:flex-row sm:items-center sm:justify-between">
-
-              {/* COPYRIGHT */}
+              
+              {/* COPYRIGHT - MENGGUNAKAN KOMPONEN CLIENT */}
               <p className="text-xs text-slate-400">
-                © {new Date().getFullYear()} Lintang Maharani. All rights reserved.
+                © <CopyrightYear /> Lintang Maharani. All rights reserved.
               </p>
 
               {/* CREDIT */}
