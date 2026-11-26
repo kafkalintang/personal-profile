@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -10,7 +11,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = Geist({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Lintang Maharani",
   },
   description:
-    "Personal website of Lintang Maharani, showcasing her profile, education, experiences, skills, projects, achievements, blog, and literary works.",
+    "Personal website of Lintang Maharani, showcasing her profile, education, experiences, skills, projects, achievements, interests, goals, blog, mading, and literary works.",
 };
 
 const navigation = [
@@ -33,6 +34,7 @@ const navigation = [
   { label: "Achievements", href: "/achievements" },
   { label: "Interests", href: "/interests" },
   { label: "Goals", href: "/goals" },
+  { label: "Mading", href: "/mading" },
   { label: "Blog", href: "/blog" },
   { label: "Novel", href: "/novel" },
   { label: "Contact", href: "/contact" },
@@ -41,27 +43,27 @@ const navigation = [
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f8fafc] text-slate-900 flex flex-col min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen flex-col bg-[#f8fafc] text-slate-900`}
       >
         {/* GLOBAL NAVBAR */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200">
+        <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
           <nav
             aria-label="Main navigation"
-            className="max-w-[1600px] mx-auto px-5 lg:px-10"
+            className="mx-auto max-w-[1600px] px-5 lg:px-10"
           >
-            <div className="min-h-[84px] flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 py-5 xl:py-0">
+            <div className="flex min-h-[84px] flex-col gap-5 py-5 xl:flex-row xl:items-center xl:justify-between xl:py-0">
 
               {/* BRAND */}
               <Link
                 href="/"
-                className="group flex items-center gap-3 shrink-0"
+                className="group flex shrink-0 items-center gap-3"
               >
-                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center group-hover:bg-slate-700 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 transition-colors group-hover:bg-slate-700">
                   <Home size={18} className="text-white" />
                 </div>
 
@@ -70,19 +72,19 @@ export default function RootLayout({
                     Personal Profile
                   </h1>
 
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="mt-1 text-xs text-slate-400">
                     Lintang Maharani
                   </p>
                 </div>
               </Link>
 
               {/* NAVIGATION LINKS */}
-              <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap scrollbar-hide xl:justify-end">
+              <div className="scrollbar-hide flex items-center gap-1 overflow-x-auto whitespace-nowrap xl:justify-end">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="shrink-0 px-3 py-2 rounded-lg text-[13px] font-medium text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-all duration-200"
+                    className="shrink-0 rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-all duration-200 hover:bg-slate-100 hover:text-slate-950"
                   >
                     {item.label}
                   </Link>
@@ -99,39 +101,39 @@ export default function RootLayout({
 
         {/* GLOBAL FOOTER */}
         <footer className="border-t border-slate-200 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="mx-auto max-w-7xl px-6 md:px-10">
 
             {/* FOOTER CONTENT */}
-            <div className="py-10 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div className="flex flex-col gap-10 py-10 lg:flex-row lg:items-start lg:justify-between">
 
               {/* FOOTER BRAND */}
               <div className="max-w-sm">
                 <Link
                   href="/"
-                  className="text-lg font-bold tracking-tight text-slate-900"
+                  className="text-lg font-bold tracking-tight text-slate-900 transition hover:text-slate-600"
                 >
                   Personal Profile
                   <span className="text-slate-400">.</span>
                 </Link>
 
-                <p className="mt-3 text-sm text-slate-500 leading-7">
+                <p className="mt-3 text-sm leading-7 text-slate-500">
                   A personal space to share my journey, projects,
                   experiences, ideas, writings, and creative stories.
                 </p>
               </div>
 
               {/* FOOTER NAVIGATION */}
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400 mb-4">
+              <div className="w-full lg:max-w-2xl">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
                   Explore
                 </p>
 
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-x-8 gap-y-3">
+                <div className="grid grid-cols-3 gap-x-6 gap-y-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4">
                   {navigation.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-sm text-slate-500 hover:text-slate-950 transition-colors"
+                      className="text-sm text-slate-500 transition-colors hover:text-slate-950"
                     >
                       {item.label}
                     </Link>
@@ -141,11 +143,11 @@ export default function RootLayout({
             </div>
 
             {/* FOOTER BOTTOM */}
-            <div className="border-t border-slate-100 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col gap-5 border-t border-slate-100 py-5 sm:flex-row sm:items-center sm:justify-between">
 
               {/* COPYRIGHT */}
               <p className="text-xs text-slate-400">
-                © 2026 Lintang Maharani. All rights reserved.
+                © {new Date().getFullYear()} Lintang Maharani. All rights reserved.
               </p>
 
               {/* CREDIT */}
@@ -156,7 +158,7 @@ export default function RootLayout({
               {/* ADMIN LOGIN */}
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-950 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-950"
               >
                 Admin Login
                 <ArrowUpRight size={15} />
