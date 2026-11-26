@@ -15,43 +15,43 @@ import {
   Check,
 } from "lucide-react";
 
-const EMAIL = "maharanilintang83@gmail.com";
+const EMAIL = "lintang.3312411113@students.polibatam.ac.id";
 
 const socialLinks = [
   {
     name: "LinkedIn",
     handle: "Connect professionally",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/lintang-maharani-267036327/",
     icon: "linkedin",
   },
   {
     name: "GitHub",
     handle: "Explore my repositories",
-    href: "https://github.com/",
+    href: "https://github.com/kafkalintang",
     icon: "github",
   },
   {
     name: "Instagram",
     handle: "Follow my journey",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/rhniirgr8/",
     icon: "instagram",
   },
   {
     name: "X",
     handle: "Thoughts & updates",
-    href: "https://x.com/",
+    href: "https://x.com/raniinyourheart",
     icon: "x",
   },
   {
     name: "TikTok",
     handle: "Creative moments",
-    href: "https://www.tiktok.com/",
+    href: "https://www.tiktok.com/@panggil.ajaranii",
     icon: "tiktok",
   },
   {
     name: "Discord",
     handle: "Let's connect",
-    href: "https://discord.com/",
+    href: "https://discord.com/users/1548602363995099268/",
     icon: "discord",
   },
 ];
