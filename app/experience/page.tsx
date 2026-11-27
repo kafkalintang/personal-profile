@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -10,11 +9,31 @@ import {
   Layers3,
   MapPin,
   Sparkles,
+  Headphones,
 } from "lucide-react";
 
 const experiences = [
   {
     number: "01",
+    role: "Remote Administrative & Customer Support",
+    organization: "PT MULYA PERKASA ANUGERAH",
+    type: "Remote Work",
+    period: "Nov 2025 — Present",
+    location: "Remote",
+    description:
+      "Supporting the company's equipment rental operations remotely — handling customer inquiries, guiding customers through the rental process, and helping maintain the company's online presence and customer engagement.",
+    contributions: [
+      "Handle customer inquiries regarding equipment rental, including availability, specifications, and rental requirements.",
+      "Assist customers throughout the rental process, from initial inquiries and equipment selection to coordination and follow-up.",
+      "Communicate with prospective customers to identify their equipment needs and provide relevant rental information.",
+      "Manage and maintain the company's Google Business Profile to support its online business presence and customer engagement.",
+      "Support promotional activities to increase the company's online visibility and reach potential customers.",
+    ],
+    tags: ["Customer Support", "Administration", "Remote Work", "Communication"],
+    icon: Headphones,
+  },
+  {
+    number: "02",
     role: "IT Intern / Software Developer",
     organization: "Centre for Quality Assurance and Learning Development (P4M)",
     type: "Internship",
@@ -32,7 +51,7 @@ const experiences = [
     icon: Code2,
   },
   {
-    number: "02",
+    number: "03",
     role: "Programming Division Member",
     organization: "BLUG",
     type: "Student Organization",
@@ -49,7 +68,7 @@ const experiences = [
     icon: Code2,
   },
   {
-    number: "03",
+    number: "04",
     role: "Community Member",
     organization: "Google Developer Student Clubs (GDSC)",
     type: "Technology Community",
@@ -66,7 +85,7 @@ const experiences = [
     icon: Layers3,
   },
   {
-    number: "04",
+    number: "05",
     role: "Community Member",
     organization: "Iterati",
     type: "Technology Community",
