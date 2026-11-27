@@ -1,4 +1,3 @@
-
 import {
   ArrowUpRight,
   GraduationCap,
@@ -8,6 +7,10 @@ import {
   School,
   Laptop,
   Sparkles,
+  Trophy,
+  Palette,
+  Music,
+  Star,
 } from "lucide-react";
 
 const education = [
@@ -21,6 +24,7 @@ const education = [
     description:
       "Currently pursuing a Diploma III in Informatics Engineering, focusing on software development, information technology, programming, and practical problem-solving through projects and academic activities.",
     highlights: [
+      "GPA 3.66",
       "Software Development",
       "Web Programming",
       "Database Management",
@@ -37,8 +41,9 @@ const education = [
     program: "Mathematics and Natural Sciences (MIPA)",
     location: "Batam, Indonesia",
     description:
-      "Completed senior high school education in the Mathematics and Natural Sciences stream, developing foundational knowledge, analytical thinking, problem-solving skills, and discipline.",
+      "Completed senior high school education in the Mathematics and Natural Sciences stream, developing foundational knowledge, analytical thinking, problem-solving skills, and discipline. Graduated with a final score of 92.30.",
     highlights: [
+      "Final Score 92.30",
       "Mathematics",
       "Natural Sciences",
       "Analytical Thinking",
@@ -46,6 +51,60 @@ const education = [
     ],
     icon: School,
     number: "02",
+  },
+  {
+    level: "Junior High School",
+    period: "2018 — 2021",
+    status: "Graduated",
+    institution: "SMPN 11 Batam",
+    program: "General Education",
+    location: "Batam, Indonesia",
+    description:
+      "Completed junior high school with a final score of 87.00 and achieved the rank of 1st in parallel class out of 500+ students. Carried the school's good name by achieving the highest score when entering SMPN 11.",
+    highlights: [
+      "Final Score 87.00",
+      "Rank 1 Parallel (500+ Students)",
+      "Highest Entrance Score",
+      "Academic Excellence",
+    ],
+    icon: School,
+    number: "03",
+  },
+  {
+    level: "Elementary Education",
+    period: "2012 — 2018",
+    status: "Graduated",
+    institution: "SDS Theresia",
+    program: "Primary Education",
+    location: "Batam, Indonesia",
+    description:
+      "Completed elementary education with a final score of 92.00. Brought honor to the school by achieving the highest score and carrying the school's name to SMPN 11 Batam.",
+    highlights: [
+      "Final Score 92.00",
+      "Highest Score Achiever",
+      "School Honor",
+      "Academic Excellence",
+    ],
+    icon: BookOpen,
+    number: "04",
+  },
+  {
+    level: "Early Childhood Education",
+    period: "2010 — 2012",
+    status: "Graduated",
+    institution: "TK (Kindergarten)",
+    program: "Early Childhood Education",
+    location: "Batam, Indonesia",
+    description:
+      "Won numerous competitions during kindergarten, including coloring and poetry recitation. Achieved 4x competition wins at the city and national level, and also participated in dance competitions.",
+    highlights: [
+      "4x Competition Winner",
+      "City & National Level",
+      "Coloring & Poetry",
+      "Dance Competitions",
+    ],
+    icon: Palette,
+    number: "05",
   },
 ];
 
@@ -67,6 +126,24 @@ const learningAreas = [
     description:
       "Expanding knowledge through independent learning, projects, communities, and hands-on experience.",
     icon: Sparkles,
+  },
+];
+
+const achievements = [
+  {
+    title: "GPA 3.66",
+    description: "Current GPA at Politeknik Negeri Batam, reflecting consistent academic dedication.",
+    icon: Star,
+  },
+  {
+    title: "Rank 1 Parallel",
+    description: "Ranked 1st in parallel class out of 500+ students at SMPN 11 Batam.",
+    icon: Trophy,
+  },
+  {
+    title: "4x Competition Winner",
+    description: "Won coloring and poetry competitions 4 times at city and national levels during kindergarten.",
+    icon: Award,
   },
 ];
 
@@ -241,6 +318,56 @@ export default function EducationPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ACHIEVEMENTS SECTION */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+
+        <div className="flex items-center justify-between mb-12">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-slate-400">
+              Proud moments
+            </p>
+
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 mt-3">
+              Achievements
+            </h2>
+          </div>
+
+          <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white border border-slate-200 items-center justify-center">
+            <Trophy size={22} className="text-slate-500" />
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {achievements.map((achievement, index) => {
+            const Icon = achievement.icon;
+
+            return (
+              <div
+                key={achievement.title}
+                className="group p-7 bg-white border border-slate-200 rounded-3xl hover:border-slate-300 hover:shadow-lg hover:shadow-slate-100 transition-all duration-300 animate-[fadeInUp_0.7s_ease-out]"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition">
+                  <Icon size={22} className="text-slate-700" />
+                </div>
+
+                <h3 className="text-lg font-semibold tracking-tight text-slate-950 mt-6">
+                  {achievement.title}
+                </h3>
+
+                <p className="text-sm text-slate-500 leading-7 mt-3">
+                  {achievement.description}
+                </p>
+
+                <div className="mt-6 w-8 h-px bg-slate-300 group-hover:w-14 transition-all duration-300" />
+              </div>
+            );
+          })}
         </div>
       </section>
 

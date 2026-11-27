@@ -16,7 +16,7 @@ const novels = [
     subtitle: "tentang lelah yang tidak selalu bisa dijelaskan",
     genre: "Drama · Fiction",
     status: "Draft",
-    cover: "/novels/seandainya.jpg",
+    cover: "/ko.jpg",
     pdf: "/novels/seandainya.pdf",
     description:
       "Sebuah cerita tentang seseorang yang mencoba bertahan di tengah hal-hal yang tidak selalu berjalan sesuai harapan.",
@@ -27,18 +27,18 @@ const novels = [
     subtitle: "beberapa perasaan memang tidak pernah selesai",
     genre: "Romance · Fiction",
     status: "Concept",
-    cover: "/novels/mungkin-ini.jpg",
+    cover: "/mungkin.jpg",
     pdf: "/novels/mungkin-ini.pdf",
     description:
       "Tentang perasaan, pertemuan, dan seseorang yang mungkin selalu menjadi bagian dari cerita.",
   },
   {
     id: "ternyata",
-    title: "Ternyata Kita Tak Pernah Benar-Benar Ada",
+    title: "Aku Yang Terlambat Sadar",
     subtitle: "tentang sesuatu yang terasa nyata, tetapi tidak pernah menjadi milik",
     genre: "Romance · Drama",
     status: "Concept",
-    cover: "/novels/ternyata.jpg",
+    cover: "/gambar3.jpg",
     pdf: "/novels/ternyata.pdf",
     description:
       "Sebuah kisah mengenai harapan, kehilangan, dan kenyataan bahwa tidak semua hal yang terasa dekat benar-benar bisa dimiliki.",
