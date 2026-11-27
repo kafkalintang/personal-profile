@@ -28,8 +28,11 @@ export default function SiteShell({
 }) {
   const pathname = usePathname();
 
-  // Login page has its own independent design
-  if (pathname === "/login") {
+  // Pages with their own independent layouts
+  if (
+    pathname === "/login" ||
+    pathname.startsWith("/dashboard")
+  ) {
     return <>{children}</>;
   }
 
@@ -136,7 +139,7 @@ export default function SiteShell({
               Designed & built with intention.
             </p>
 
-            {/* ADMIN LOGIN */}
+            {/* LOGIN */}
             <Link
               href="/login"
               className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-950"
