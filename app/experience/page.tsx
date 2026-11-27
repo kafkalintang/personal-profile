@@ -10,11 +10,30 @@ import {
   MapPin,
   Sparkles,
   Headphones,
+  Wrench,
 } from "lucide-react";
 
 const experiences = [
   {
     number: "01",
+    role: "IT Intern / Software Developer",
+    organization: "Centre for Quality Assurance and Learning Development (P4M)",
+    type: "Internship",
+    period: "September 2026 — Present",
+    location: "Politeknik Negeri Batam",
+    description:
+      "Contributing to the development of digital solutions and internal systems while gaining hands-on experience in software development, system implementation, collaboration, and problem-solving.",
+    contributions: [
+      "Contribute to the development and improvement of web-based applications.",
+      "Work with frontend and backend technologies during application development.",
+      "Participate in system discussions, feedback sessions, and development revisions.",
+      "Learn to translate operational needs into practical digital solutions.",
+    ],
+    tags: ["Software Development", "Web Development", "Team Collaboration"],
+    icon: Code2,
+  },
+  {
+    number: "02",
     role: "Remote Administrative & Customer Support",
     organization: "PT MULYA PERKASA ANUGERAH",
     type: "Remote Work",
@@ -33,29 +52,11 @@ const experiences = [
     icon: Headphones,
   },
   {
-    number: "02",
-    role: "IT Intern / Software Developer",
-    organization: "Centre for Quality Assurance and Learning Development (P4M)",
-    type: "Internship",
-    period: "September 2026 — Present",
-    location: "Politeknik Negeri Batam",
-    description:
-      "Contributing to the development of digital solutions and internal systems while gaining hands-on experience in software development, system implementation, collaboration, and problem-solving.",
-    contributions: [
-      "Contribute to the development and improvement of web-based applications.",
-      "Work with frontend and backend technologies during application development.",
-      "Participate in system discussions, feedback sessions, and development revisions.",
-      "Learn to translate operational needs into practical digital solutions.",
-    ],
-    tags: ["Software Development", "Web Development", "Team Collaboration"],
-    icon: Code2,
-  },
-  {
     number: "03",
     role: "Programming Division Member",
-    organization: "BLUG",
+    organization: "Batam Linux User Group (BLUG)",
     type: "Student Organization",
-    period: "2024 — Present",
+    period: "Nov 2025 — Present",
     location: "Politeknik Negeri Batam",
     description:
       "Being part of a programming community that encourages technical development, collaborative learning, and exploration of programming concepts and technologies.",
@@ -69,8 +70,25 @@ const experiences = [
   },
   {
     number: "04",
-    role: "Community Member",
-    organization: "Google Developer Student Clubs (GDSC)",
+    role: "Student Member",
+    organization: "ITERATI — The Institution of Engineering Technicians and Engineering Technologists",
+    type: "Professional Organization",
+    period: "2024 — Present",
+    location: "Politeknik Negeri Batam, Indonesia",
+    description:
+      "A student member of a professional engineering institution focused on engineering technicians and technologists, supporting technical development, professional growth, and connection within the engineering and technology community.",
+    contributions: [
+      "Engage with engineering and technology-oriented professional activities.",
+      "Expand technical perspectives and professional knowledge.",
+      "Build connections with fellow engineering and technology enthusiasts.",
+    ],
+    tags: ["Engineering", "Professional Organization", "Networking"],
+    icon: Wrench,
+  },
+  {
+    number: "05",
+    role: "GDSC Member",
+    organization: "Google for Developers Community",
     type: "Technology Community",
     period: "2024 — Present",
     location: "Student Developer Community",
@@ -83,23 +101,6 @@ const experiences = [
     ],
     tags: ["Technology", "Developer Community", "Innovation"],
     icon: Layers3,
-  },
-  {
-    number: "05",
-    role: "Community Member",
-    organization: "Iterati",
-    type: "Technology Community",
-    period: "2024 — Present",
-    location: "Technology Community",
-    description:
-      "Participating in a technology-oriented community as part of my journey to expand technical knowledge, gain insights, and grow alongside other technology enthusiasts.",
-    contributions: [
-      "Explore technology-related discussions and learning opportunities.",
-      "Expand technical perspectives and knowledge.",
-      "Build connections with fellow technology enthusiasts.",
-    ],
-    tags: ["Technology", "Networking", "Growth"],
-    icon: Sparkles,
   },
 ];
 

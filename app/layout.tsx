@@ -148,7 +148,7 @@ export default function RootLayout({
                 href="/login"
                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-950"
               >
-                Admin Login
+                Login
                 <ArrowUpRight size={15} />
               </Link>
             </div>
